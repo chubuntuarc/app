@@ -1,4 +1,4 @@
-<?php 
+<?php
 include("data/vars.php");
 ?>
 <!DOCTYPE html>
@@ -32,33 +32,33 @@ include("data/vars.php");
       <!-- Compiled and minified JavaScript -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
       <script type='text/javascript' src='js/edit_likes_list.js'></script>
-      
+
       <div class="se-pre-con"></div>
-      
+
       <div navbar-fixed>
         <?php include("element/navbar.php"); ?>
       </div>
-      
+
       <div class="sub-head teal">
         <p>Mis gustos</p>
       </div>
-      
+
       <div class="row">
         <div class="col s12 m4 offset-m4">
           <p class="center-align" style="margin-bottom: -20px;font-weight: bold;">Queremos ofrecerte la mejor experiencia, apoyanos seleccionando lo que mas te gusta y nosotros hacemos el resto.</p>
           <span id="message"></span>
         </div>
       </div>
-      
+
       <?php include("element/sidebar.php"); ?>
-      
-      
+
+
       <!--List of selected items by the user-->
       <?php
         include("../app/data/process/selected_liked_list.php");
       ?>
-      
-      
+
+
       <link rel="stylesheet" href="../app/css/cards.css">
       <div class="row">
         <?php
@@ -80,18 +80,18 @@ include("data/vars.php");
               }
                 echo '</div>';
               echo '</div>';
-            echo '</div>'; 
-          } 
+            echo '</div>';
+          }
         ?>
       </div>
-           
-      
-      <?php include("element/footer.php"); ?>      
-      
+
+
+      <?php include("element/footer.php"); ?>
+
 <script>
   $(".account").sideNav();
   $(".button-collapse").sideNav();
 </script>
-      
+
     </body>
 </html>

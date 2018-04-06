@@ -1,4 +1,4 @@
-<?php 
+<?php
 include("data/vars.php");
 $id_recipe = $_GET['id'];
 include('data/recipe_data.php');
@@ -34,15 +34,15 @@ include('data/counter.php');
       <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
       <!-- Compiled and minified JavaScript -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-      
+
       <div class="se-pre-con"></div>
-      
+
       <div navbar-fixed>
         <?php include("element/navbar.php"); ?>
       </div>
-      
+
       <?php include("element/sidebar.php"); ?>
-      
+
       <div class="row" style="margin-top:64px;">
         <div class="col s12 m4">
           <div class="card" style="border-radius: 10px;">
@@ -88,15 +88,15 @@ include('data/counter.php');
         </div>
       </div>
       </div>
-     
-      
-      <?php include("element/footer.php"); ?>      
-      
+
+
+      <?php include("element/footer.php"); ?>
+
       <script>
       $(".account").sideNav();
       $(".button-collapse").sideNav();
       </script>
       <script src="js/ingredients_validator.js"></script>
-      
+
     </body>
   </html>
