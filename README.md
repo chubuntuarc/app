@@ -1,2 +1,0 @@
-# glib
-Cook your way
