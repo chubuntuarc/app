@@ -4,7 +4,7 @@ include("data/vars.php");
 include("data/shopping_list.php");
 error_reporting(0);
 if($_POST["list_status"] == 1){
-  header('Location: /app/steps.php');  
+  header('Location: /app/steps.php?id='.$_POST["id_recipe_value"]);  
 }else{
   //Save new ingredients on list
   include("data/process/add_to_shopping_list.php");

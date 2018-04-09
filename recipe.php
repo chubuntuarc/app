@@ -83,6 +83,7 @@ include('data/counter.php');
           <form name="ingedient_list" id="ingedient_list" action="list.php" method="post">
             <?php include('data/ingredient_list.php'); ?>
               <input type="hidden" id="list_status" name="list_status" value="0">
+            <?php echo '<input type="hidden" id="id_recipe_value" name="id_recipe_value" value="'.$id_recipe.'">'; ?>
              <button id="get_ingredients" class="btn waves-effect waves-light" type="submit" name="action" >Lista de compras</button>
           </form>
         </div>

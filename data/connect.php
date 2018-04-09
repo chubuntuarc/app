@@ -10,4 +10,7 @@ ini_set('display_errors', 1);
 		echo 'Conexion Fallida : ', mysqli_connect_error();
 		exit();
 	}
+
+/** cambio del juego de caracteres a utf8 */
+$mysqli->set_charset("utf8");
 ?>
