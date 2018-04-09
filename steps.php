@@ -11,7 +11,7 @@ include("data/vars.php");
       <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
       <!-- Compiled and minified CSS -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-      <link rel="stylesheet" href="../App/css/style.css">
+      <link rel="stylesheet" href="../app/css/style.css">
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <link rel="shortcut icon" type="image/png" href="../favicon.png"/>
@@ -44,30 +44,21 @@ include("data/vars.php");
       
       <?php include("element/sidebar.php"); ?>
       
+      <!--La info se va a actualizar en base al siguiente o anterior paso, descargar todos los pasos en arreglo, o inputs escondidos y mostrar
+      y/o ocultar segun el paso ue siga con javascript-->
       <div class="row">
-        <div class="col s12 m8">
+      <div id="step1" class="col s12 m8">
+       <div class="row">
           <div class="card-panel">
-          <form action="list.php">
+            <h5>Paso 1</h5>
             <p>
-              <input type="checkbox" id="test6" checked="checked" />
-              <label for="test6">Harina 400g</label>
+              Para la salsa, pon los tomates en una cacerola pequeña; añade suficiente agua para cubrir arriba de una pulgada.
             </p>
-            <p>
-              <input type="checkbox" id="test2" />
-              <label for="test2">Huevo 2pz</label>
-            </p>
-            <p>
-              <input type="checkbox" id="test3" />
-              <label for="test3">Puré de tomate 200g</label>
-            </p>
-            <p>
-              <input type="checkbox" id="test4" />
-              <label for="test4">Queso 300g</label>
-            </p>
-          </form>
+            <img src="https://i.ytimg.com/vi/jfAh3fOBB6E/maxresdefault.jpg" class="responsive-img z-depth-2" alt="">
         </div>
-      </div>
-         <div class="col s12 m4">
+      </div> 
+       </div>
+          <div class="col s12 m4">
           <div class="card">
             <div class="card-image">
               <img src="http://www.maqui.com.mx/images/clientes/banner_oxxo.jpg">
@@ -75,8 +66,10 @@ include("data/vars.php");
           </div>
         </div>
       </div>
-     
       
+      
+      
+     
       <?php include("element/footer.php"); ?>      
       
       <script>
