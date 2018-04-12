@@ -12,6 +12,7 @@ include("data/vars.php");
       <!-- Compiled and minified CSS -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
       <link rel="stylesheet" href="../app/css/style.css">
+      <link rel="stylesheet" href="../app/css/steps.css">
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <link rel="shortcut icon" type="image/png" href="../favicon.png"/>
@@ -43,24 +44,21 @@ include("data/vars.php");
       </div>
       
       <?php include("element/sidebar.php"); ?>
-
+      
       <div class="row">
-      <div id="step" class="col s12 m8">
-       <div class="row">
-          <?php include('../app/data/steps_list.php'); ?>
-      </div> 
-       </div>
-          <div class="col s12 m4">
-          <div class="card">
-            <div class="card-image">
-              <img src="http://www.maqui.com.mx/images/clientes/banner_oxxo.jpg">
-            </div>
+        <div class="col s12">
+          <div class="container">
+          <div class="stepwizard col s12">
+              <div class="stepwizard-row setup-panel">
+                <?php include('../app/data/steps_list_bar.php'); ?>
+              </div>
+          </div>
+          <form role="form">
+              <?php include('../app/data/steps_list.php'); ?>
+          </form>
           </div>
         </div>
       </div>
-      
-      
-      
      
       <?php include("element/footer.php"); ?>      
       
@@ -68,6 +66,8 @@ include("data/vars.php");
       $(".account").sideNav();
         $(".button-collapse").sideNav();
       </script>
+      
+      <script type='text/javascript' src='../app/js/steps.js'></script>
       
     </body>
   </html>
