@@ -24,7 +24,7 @@
     </head>
 
     <body>
-      <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js'></script>
+      <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js'></script>
       <script>
       //paste this code under the head tag or in a separate js file.
         // Wait for window load
