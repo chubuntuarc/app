@@ -10,12 +10,8 @@ echo '</div>';
 //Side bar
 include_once 'element/sidebar.php';
 //Main cards
-echo '<div class="container cards hide-on-small-only">';
+echo '<div class="container cards">';
 include_once 'element/main_cards.php'; //Main cards script
-echo '</div>';
-//Mobile main cards
-echo '<div class="container cards hide-on-med-and-up">';
-include_once 'element/main_mobile_cards.php'; //Mobile main cards script
 echo '</div>';
 //Recomended cards
 echo '<div class="recomended-title" style="background-color: '.$main_color.';color:#FFF;">';
