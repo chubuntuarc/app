@@ -21,3 +21,11 @@
     </div>
   </div>
 </footer>
+
+<script>
+$(".account").sideNav();
+$(".button-collapse").sideNav();
+</script>
+      
+    </body>
+  </html>
