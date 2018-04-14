@@ -1,4 +1,5 @@
 <?php
+//Cron script*****
 include('/home/cabox/workspace/app/data/vars.php');
 include('/home/cabox/workspace/app/data/connect.php');
 	

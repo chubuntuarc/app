@@ -83,5 +83,23 @@
        $query->bindParam(':id_user', $id_user);
        $query->execute();
     }
+   //User liked categories
+   public static function getUserLikedCategories($id_user){
+       $connect = new Connect();
+       $query = $connect->prepare('SELECT id_category FROM likes_list WHERE id_client = :id_user');
+       $query->bindParam(':id_user', $id_user);
+       $query->execute();
+       $response = $query->fetchAll();
+       return $response;
+    }
+   //User current inventory
+   public static function getUserInventory($id_user){
+       $connect = new Connect();
+       $query = $connect->prepare('SELECT DISTINCT id_ingredient FROM inventory_list WHERE id_client = :id_user');
+       $query->bindParam(':id_user', $id_user);
+       $query->execute();
+       $response = $query->fetchAll();
+       return $response;
+    }
  }
 ?>
