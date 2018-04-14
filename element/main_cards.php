@@ -1,7 +1,4 @@
 <?php
-//Required classes
-require_once 'data/class/Recipe.php';
-require_once 'data/class/Sponsor.php';
 //Objects
 $day_recipe = Recipe::daysRecipe();
 $first_sponsor_recipe = Recipe::getFirstSponsor();
@@ -9,6 +6,7 @@ $first_sponsor_logo = Sponsor::getFirstSponsorLogo();
 $second_sponsor_recipe = Recipe::getSecondSponsor();
 $second_sponsor_logo = Sponsor::getSecondSponsorLogo();
 //Html tags
+echo '<div class="container cards">';
 echo '<link rel="stylesheet" href="../app/css/cards.css">';
 echo '<div class="row">';
 //Day's recipe
@@ -55,6 +53,7 @@ echo '</div>';
  }else{
     echo 'No se encontro la primera receta patrocinada';
  }
+echo '</div>';
 echo '</div>';
   ?>
       

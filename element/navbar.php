@@ -1,3 +1,4 @@
+<div navbar-fixed>
 <nav>
     <div class="nav-wrapper" <?php echo 'style="background-color: '.$main_color.'"' ?>>
       <a href="/app/" class="brand-logo"><?php echo $app_name ?><span style="font-size:10px;" class="hide-on-med-and-down">Cook your way</span></a>
@@ -27,3 +28,4 @@
   </script>
   
   </nav>
+   </div>

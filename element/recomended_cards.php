@@ -1,8 +1,9 @@
 <?php
-  //Required classes
-  require_once 'data/vars.php';
-  require_once 'data/class/Recipe.php';
   //Html tags
+  echo '<div class="recomended-title" style="background-color: '.$main_color.';color:#FFF;">';
+  echo '<h2 class="container">Recomendados</h2>';
+  echo '</div>';
+  echo '<div class="container" >';
   echo '<link rel="stylesheet" href="../app/css/cards.css">';
   echo '<div class="row">'; 
   echo '<p style="margin-bottom: -20px;font-weight: bold;">En base a tus gustos e inventario, te recomendamos las siguientes recetas.</p>';
@@ -18,5 +19,6 @@
     echo '</div>';
   echo '</div>';
   endforeach;
+echo '</div>';
+echo '</div>';
   ?>
- </div>
