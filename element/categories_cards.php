@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="../app/css/cards.css">
 <div class="row">
   <?php
     require("../app/data/connect.php");

@@ -4,7 +4,6 @@
   echo '<h2 class="container">Recomendados</h2>';
   echo '</div>';
   echo '<div class="container" >';
-  echo '<link rel="stylesheet" href="../app/css/cards.css">';
   echo '<div class="row">'; 
   echo '<p style="margin-bottom: -20px;font-weight: bold;">En base a tus gustos e inventario, te recomendamos las siguientes recetas.</p>';
   //Content

@@ -7,7 +7,6 @@ $second_sponsor_recipe = Recipe::getSecondSponsor();
 $second_sponsor_logo = Sponsor::getSecondSponsorLogo();
 //Html tags
 echo '<div class="container cards">';
-echo '<link rel="stylesheet" href="../app/css/cards.css">';
 echo '<div class="row">';
 //Day's recipe
 if($day_recipe){
