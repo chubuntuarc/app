@@ -101,5 +101,15 @@
        $response = $query->fetchAll();
        return $response;
     }
+   
+//Get shopping list
+   public static function getUserShoppingList($id_user){
+       $connect = new Connect();
+       $query = $connect->prepare('SELECT DISTINCT id_ingredient FROM inventory_list WHERE id_client = :id_user');
+       $query->bindParam(':id_user', $id_user);
+       $query->execute();
+       $response = $query->fetchAll();
+       return $response;
+    }
  }
 ?>
