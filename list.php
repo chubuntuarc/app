@@ -5,6 +5,11 @@ include 'data/vars.php';
 //Required classes
 require_once 'data/class/User.php';
 
+//If delete element run
+if(isset( $_POST['value'] )) {
+     User::deleteFromShoppingList($_POST['value'],$id_user);
+}
+
 //Objects
 $list = User::getUserShoppingList($id_user);
 

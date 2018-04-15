@@ -1,5 +1,6 @@
 <?php
  require_once 'data/conection.php';
+
  class User {
    private $id_user;
    private $username;
@@ -135,5 +136,15 @@
         $insert_ingredients = "";
       }
    }
+   
+//Delete from user shopping list
+   public static function deleteFromShoppingList($value,$id_user){
+       $connect = new Connect();
+       $query = $connect->prepare('DELETE FROM shopping_ingredients WHERE id_ingredient = :value AND id_list = :id_user');
+       $query->bindParam(':value', $value);
+       $query->bindParam(':id_user', $id_user);
+       $query->execute();
+    }
+   
  }
 ?>

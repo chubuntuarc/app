@@ -1,13 +1,12 @@
 //Function to run ajax that delete elements from shopping list
 function delete_from_shopping_list(value){
 var params = {
-        "value" : value.value,
-        "list"  : value.getAttribute("list")
+        "value" : value.value
 };
 
 $.ajax({
         data:  params, //Data to sent through ajax
-        url:   'data/process/delete_from_shopping_list.php', //archivo que recibe la peticion
+        url:   'list.php', //Function of the User class
         type:  'post', //método de envio
         dataType:"html",
         asycn:false,
