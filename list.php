@@ -6,16 +6,15 @@ include 'data/vars.php';
 require_once 'data/class/User.php';
 
 //Objects
-$shopping_list = User::getUserShoppingList($id_user);
+$list = User::getUserShoppingList($id_user);
 
-require("data/connect.php");
-include("data/shopping_list.php");
+//Check list status
 error_reporting(0);
 if($_POST["list_status"] == 1){
   header('Location: /app/steps.php?id='.$_POST["id_recipe_value"]);  
 }else{
   //Save new ingredients on list
-  include("data/process/add_to_shopping_list.php");
+  User::addToShoppingList($_POST['ingredient_val'],$_POST['ingredients'],$id_user);
 }
 
 //Html head
@@ -42,7 +41,17 @@ echo '<div class="row">';
   echo '<div class="col s12 m8">';
     echo '<div class="card-panel">';
     echo '<form action="list.php">';
-      include_once('data/shopping_ingredients.php');
+      //Script to print ingredients
+        if(!$list){
+           echo '<h5>Lista vacia</h5>';
+        }else{
+          foreach($list as $item):
+          echo '<p>';
+          echo '<input class="ingredient" type="checkbox" name="ingredient" id="ingredient'.$item['id'].'" list="'.$id_user.'" value="'.$item['id'].'" onClick="delete_from_shopping_list(this)"/>';
+          echo '<label for="ingredient'.$item['id'].'">'.$item['ingredient_name'].'</label>';
+          echo '</p>';
+          endforeach;
+        }
       echo '<span id="message"></span>';
     echo '</form>';
     echo '</div>';
@@ -55,6 +64,9 @@ echo '<div class="col s12 m4">';
     echo '</div>';
   echo '</div>';
 echo '</div>';
+
+//Js for items delete
+echo '<script src="js/start_delete_from_shopping_list.js"></script>';
 
 //Footer
 include 'element/footer.php';

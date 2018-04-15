@@ -55,7 +55,8 @@
       }
       $connect = null;
    }
-   //Search by ID
+   
+ //Search user by ID
    public static function searchById($id_user){
        $connect = new Connect();
        $query = $connect->prepare('SELECT username, first_name, second_name FROM ' . self::Table . ' WHERE id_client = :id_user');
@@ -68,7 +69,8 @@
           return false;
        }
     }
-   //Search full values
+   
+ //Search all user values
    public static function getAll(){
        $connect = new Connect();
        $query = $connect->prepare('SELECT id_client, username, first_name, second_name FROM ' . self::Table . ' ORDER BY first_name');
@@ -76,14 +78,16 @@
        $response = $query->fetchAll();
        return $response;
     }
-   //Delete by ID
+  
+ //Delete user by ID
    public static function deleteById($id_user){
        $connect = new Connect();
        $query = $connect->prepare('DELETE FROM ' . self::Table . ' WHERE id_client = :id_user');
        $query->bindParam(':id_user', $id_user);
        $query->execute();
     }
-   //User liked categories
+   
+ //User liked categories
    public static function getUserLikedCategories($id_user){
        $connect = new Connect();
        $query = $connect->prepare('SELECT id_category FROM likes_list WHERE id_client = :id_user');
@@ -92,7 +96,8 @@
        $response = $query->fetchAll();
        return $response;
     }
-   //User current inventory
+   
+ //User current inventory
    public static function getUserInventory($id_user){
        $connect = new Connect();
        $query = $connect->prepare('SELECT DISTINCT id_ingredient FROM inventory_list WHERE id_client = :id_user');
@@ -102,14 +107,33 @@
        return $response;
     }
    
-//Get shopping list
+//Get users's shopping list
    public static function getUserShoppingList($id_user){
        $connect = new Connect();
-       $query = $connect->prepare('SELECT DISTINCT id_ingredient FROM inventory_list WHERE id_client = :id_user');
+       $query = $connect->prepare('SELECT s.id_ingredient as id, i.name as ingredient_name FROM shopping_ingredients s LEFT JOIN ingredients i ON i.id_ingredient = s.id_ingredient WHERE s.id_list = :id_user');
        $query->bindParam(':id_user', $id_user);
        $query->execute();
        $response = $query->fetchAll();
        return $response;
     }
+   
+//Add ingredients to user's shopping list
+   public function addToShoppingList($options=null,$checked=null,$shopping_list=null){
+       if($checked){
+          $unchecked = array_diff($options, $checked);
+          $insert_ingredients = "INSERT INTO shopping_ingredients (id_ingredient, id_list) VALUES ";
+            foreach($unchecked as $result) {
+              $insert_ingredients .= "(".$result.", ".$shopping_list."),";
+              }
+             $insert_ingredients = substr_replace($insert_ingredients, "", -1);
+          $connect = new Connect();
+             $query = $connect->prepare($insert_ingredients);
+             $query->execute();
+          $connect = null;
+          header('Location: /app/list.php');  
+      }else{
+        $insert_ingredients = "";
+      }
+   }
  }
 ?>
