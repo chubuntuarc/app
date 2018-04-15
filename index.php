@@ -30,12 +30,7 @@ include 'element/recomended_cards.php';
 include 'element/popular_cards.php';
 
 //Categories cards
-echo '<div class="recomended-title" style="background-color: '.$second_color.';color:#FFF;">';
-echo '<h2 class="container">Categorías</h2>';
-echo '</div>';
-echo '<div class="container" style="margin-top:20px;">';
-include 'element/categories_cards.php'; //Categories cards script
-echo '</div>';
+include 'element/categories_cards.php';
 
 //Footer
 include 'element/footer.php';
