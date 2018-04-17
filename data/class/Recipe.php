@@ -211,5 +211,14 @@ class Recipe {
        return $response;
     }
   
+//Get all ingredients list
+   public static function getAllIngredients(){
+       $connect = new Connect();
+       $query = $connect->prepare('SELECT id_ingredient as id, name FROM ingredients ORDER BY name ASC');
+       $query->execute();
+       $response = $query->fetchAll();
+       return $response;
+    }    
+  
 }
 ?>

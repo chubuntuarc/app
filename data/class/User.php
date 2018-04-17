@@ -146,5 +146,15 @@
        $query->execute();
     }
    
+//Get users's inventory list
+   public static function getUserInventoryList($id_user){
+       $connect = new Connect();
+       $query = $connect->prepare('SELECT s.id_ingredient as id, i.name as ingredient_name FROM inventory_list s LEFT JOIN ingredients i ON i.id_ingredient = s.id_ingredient WHERE s.id_client = :id_user ORDER BY name ASC');
+       $query->bindParam(':id_user', $id_user);
+       $query->execute();
+       $response = $query->fetchAll();
+       return $response;
+    }   
+   
  }
 ?>
