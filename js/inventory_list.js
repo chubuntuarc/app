@@ -2,12 +2,12 @@
 function delete_from_inventory_list(value){
 var params = {
         "value" : value.value,
-        "list"  : value.getAttribute("list")
+        "delete": "yes"
 };
 
 $.ajax({
         data:  params, //Data to sent through ajax
-        url:   'data/process/delete_from_inventory_list.php', //archivo que recibe la peticion
+        url:   'inventory.php', //archivo que recibe la peticion
         type:  'post', //método de envio
         dataType:"html",
         asycn:false,
@@ -26,7 +26,7 @@ function add_to_inventory_list(value){
   //Getted values
   var params = {
         "value" : value.value,
-        "array" : value.getAttribute('array')
+        "todo"  : "yes"
   };
   
   //Check if the element already exists
@@ -36,7 +36,7 @@ function add_to_inventory_list(value){
   else{
        $.ajax({
         data:  params, //Data to sent through ajax
-        url:   'data/process/add_to_inventory_list.php', //archivo que recibe la peticion
+        url:   'inventory.php', //archivo que recibe la peticion
         type:  'post', //método de envio
         dataType:"html",
         asycn:false,

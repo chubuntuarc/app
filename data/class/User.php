@@ -156,5 +156,23 @@
        return $response;
     }   
    
+//Add ingredients to user's inventory list
+   public function addToInventoryList($value,$id_user){
+     $connect = new Connect();
+     $query = $connect->prepare('INSERT INTO inventory_list(id_ingredient,id_client) VALUES(:value,:id_user)');
+     $query->bindParam(':id_user', $id_user);
+     $query->bindParam(':value', $value);
+     $query->execute();
+   } 
+   
+//Delete ingredients from user's inventory list
+   public function deleteFromInventoryList($value,$id_user){
+     $connect = new Connect();
+     $query = $connect->prepare('DELETE FROM inventory_list WHERE id_ingredient = :value AND id_client = :id_user');
+     $query->bindParam(':id_user', $id_user);
+     $query->bindParam(':value', $value);
+     $query->execute();
+   }   
+   
  }
 ?>

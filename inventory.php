@@ -6,6 +6,16 @@ include 'data/vars.php';
 require_once 'data/class/Recipe.php';
 require_once 'data/class/User.php';
 
+//If insert element run
+if(isset( $_POST['insert'] )) {
+     User::addToInventoryList($_POST['value'],$id_user);
+}
+
+//If delete element run
+if(isset( $_POST['delete'] )) {
+     User::deleteFromInventoryList($_POST['value'],$id_user);
+}
+
 //Objects
 $list = User::getUserInventoryList($id_user);
 $ingredients = Recipe::getAllIngredients();
