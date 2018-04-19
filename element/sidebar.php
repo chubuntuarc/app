@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="../app/css/sidebar.css">
 <ul id="slide-out" class="side-nav">
-    <li><div class="user-view" <?php echo 'style="background-color: '.$second_color.'"' ?>>
-      <a href="#!user"><img class="circle" src="https://avatars3.githubusercontent.com/u/9604554?s=460&v=4"></a>
+    <li><div class="user-view" <?php echo 'style="background-color: '.$main_color.'"' ?>>
+      <a href="#!user"><img class="circle responsive-img" src="images/profile/us1.gif"></a>
       <a href="#!name"><span class="white-text name">Jesus Arciniega</span></a>
       <a href="#!email"><span class="white-text email">dev.jesusarc@gmail.com</span></a>
     </div></li>
