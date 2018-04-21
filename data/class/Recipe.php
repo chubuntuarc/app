@@ -109,7 +109,7 @@ class Recipe {
 //Get recipe ingredients list
   public static function getRecipeIngredients($id_recipe){
        $connect = new Connect();
-       $query = $connect->prepare('SELECT i.id_ingredient as id,i.name as ingredient_name FROM recipe_ingredient r LEFT JOIN ingredients i ON r.ingredient = i.id_ingredient  WHERE id_recipe = :id_recipe');
+       $query = $connect->prepare('SELECT i.id_ingredient as id,i.name as ingredient_name, r.quantity, t.name as type, r.type as type_id FROM recipe_ingredient r LEFT JOIN ingredients i ON r.ingredient = i.id_ingredient LEFT JOIN ingredient_types t ON r.type = t.id_type  WHERE id_recipe = :id_recipe');
        $query->bindParam(':id_recipe', $id_recipe);
        $query->execute();
        $response = $query->fetchAll();

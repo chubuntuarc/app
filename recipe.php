@@ -74,7 +74,15 @@ echo '<div class="card-panel">';
     }else {
     echo '<input class="ingredient" type="checkbox" name="ingredients[]" id="ingredient'.$item['id'].'" onClick="count_checks();" value="'.$item['id'].'"/>';
     }
-    echo '<label for="ingredient'.$item['id'].'">'.$item['ingredient_name'].'</label>';
+    //Check if quantity is on 0, like "To taste" - "Al gusto"
+    if($item['quantity'] == 0){
+      echo '<label for="ingredient'.$item['id'].'">'.$item['ingredient_name'].'</label>&nbsp;&nbsp;&nbsp;<span>'.$item['type'].' </span>';
+    }elseif($item['type_id'] == 5 || $item['type_id'] == 6 || $item['type_id'] == 7 || $item['type_id'] == 8 || $item['type_id'] == 11 || $item['type_id'] == 12){
+      echo '<label for="ingredient'.$item['id'].'">'.$item['ingredient_name'].'</label>&nbsp;&nbsp;&nbsp;<span id="quantity_'.$item['id'].'" style="display:none;">'.$item['quantity'].' </span><span>'.$item['type'].' </span>';
+    }else{
+      echo '<label for="ingredient'.$item['id'].'">'.$item['ingredient_name'].'</label>&nbsp;&nbsp;&nbsp;<span id="quantity_'.$item['id'].'">'.$item['quantity'].' </span><span>'.$item['type'].' </span>';
+    }
+    
     echo '</p>';
     echo '<input type="hidden" name="ingredient_val[]" value="'.$item['id'].'" />';
     endforeach;
