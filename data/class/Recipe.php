@@ -41,7 +41,7 @@ class Recipe {
    public function getSponsor() {
       return $this->sponsor;
    }
-   public function getTime() {
+   public function getTimes() {
       return $this->times;
    }
   //Setters
@@ -66,8 +66,8 @@ class Recipe {
    public function setDiners($diners) {
       $this->diners = $diners;
    }
-   public function setTime($time) {
-      $this->times = $time;
+   public function setTimes($times) {
+      $this->times = $times;
    }
   //Construct
   public function __construct($category, $name, $description=null, $main_pic, $sec_pic=null, $stars=null, $diners, $sponsor, $times, $id_recipe=null) {
@@ -83,6 +83,40 @@ class Recipe {
       $this->id_recipe = $id_recipe;
    }
   
+ //Search recipe by ID
+   public static function searchById($id_recipe){
+       $connect = new Connect();
+       $query = $connect->prepare('SELECT category, name, description, main_pic, sec_pic, stars, diners, sponsor, time FROM ' . self::Table . ' WHERE id_recipe = :id_recipe');
+       $query->bindParam(':id_recipe', $id_recipe);
+       $query->execute();
+       $response = $query->fetch();
+       if($response){
+          return new self($response['category'], $response['name'], $response['description'], $response['main_pic'], $response['sec_pic'], $response['stars'], $response['diners'],  $response['sponsor'], $response['time'], $id_recipe);
+       }else{
+          return false;
+       }
+    }  
+  
+//Update recipe counter
+  public static function updateCounter($id_recipe){
+       $connect = new Connect();
+       $query = $connect->prepare('UPDATE recipe SET counter = counter + 1 WHERE id_recipe = :id_recipe');
+       $query->bindParam(':id_recipe', $id_recipe);
+       $query->execute();
+        return false;
+    }  
+  
+//Get recipe ingredients list
+  public static function getRecipeIngredients($id_recipe){
+       $connect = new Connect();
+       $query = $connect->prepare('SELECT i.id_ingredient as id,i.name as ingredient_name FROM recipe_ingredient r LEFT JOIN ingredients i ON r.ingredient = i.id_ingredient  WHERE id_recipe = :id_recipe');
+       $query->bindParam(':id_recipe', $id_recipe);
+       $query->execute();
+       $response = $query->fetchAll();
+       return $response;
+    }
+  
+ 
  //Day's recipe
    public static function daysRecipe(){
        $connect = new Connect();
