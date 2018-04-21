@@ -53,7 +53,7 @@ echo '<div class="row">';
           foreach($list as $item):
           echo '<p>';
           echo '<input class="ingredient" type="checkbox" name="ingredient" id="ingredient'.$item['id'].'" list="'.$id_user.'" value="'.$item['id'].'" onClick="delete_from_shopping_list(this)"/>';
-          echo '<label for="ingredient'.$item['id'].'">'.$item['ingredient_name'].'</label>';
+          echo '<label for="ingredient'.$item['id'].'">'.$item['ingredient_name'].'</label>&nbsp;&nbsp;&nbsp;<span id="quantity_'.$item['id'].'">'.$item['quantity'].' </span><span>'.$item['type'].' </span>';
           echo '</p>';
           endforeach;
         }

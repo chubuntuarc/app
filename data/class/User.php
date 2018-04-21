@@ -111,7 +111,7 @@
 //Get users's shopping list
    public static function getUserShoppingList($id_user){
        $connect = new Connect();
-       $query = $connect->prepare('SELECT s.id_ingredient as id, i.name as ingredient_name FROM shopping_ingredients s LEFT JOIN ingredients i ON i.id_ingredient = s.id_ingredient WHERE s.id_list = :id_user');
+       $query = $connect->prepare('SELECT s.id_ingredient as id, i.name as ingredient_name, s.quantity as quantity, t.name as type FROM shopping_ingredients s LEFT JOIN ingredients i ON i.id_ingredient = s.id_ingredient LEFT JOIN ingredient_types t ON s.type = t.id_type WHERE s.id_list = :id_user');
        $query->bindParam(':id_user', $id_user);
        $query->execute();
        $response = $query->fetchAll();
