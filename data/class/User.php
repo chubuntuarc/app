@@ -119,12 +119,14 @@
     }
    
 //Add ingredients to user's shopping list
-   public function addToShoppingList($options=null,$checked=null,$shopping_list=null){
+   public function addToShoppingList($options=null,$checked=null,$shopping_list=null,$id_recipe=null){
        if($checked){
           $unchecked = array_diff($options, $checked);
-          $insert_ingredients = "INSERT INTO shopping_ingredients (id_ingredient, id_list) VALUES ";
+          $insert_ingredients = "INSERT INTO shopping_ingredients (id_ingredient, quantity, type, id_list) VALUES ";
             foreach($unchecked as $result) {
-              $insert_ingredients .= "(".$result.", ".$shopping_list."),";
+              $quantity = User::getOnRecipeQuantity($result,$id_recipe);
+              $type = User::getOnRecipeType($result,$id_recipe);
+              $insert_ingredients .= "(".$result.",".$quantity.", ".$type.",".$shopping_list."),";
               }
              $insert_ingredients = substr_replace($insert_ingredients, "", -1);
           $connect = new Connect();
@@ -136,6 +138,29 @@
         $insert_ingredients = "";
       }
    }
+   
+//Get ingredient quantity on recipe
+   private function getOnRecipeQuantity($ingredient,$id_recipe){
+       $connect = new Connect();
+       $query = $connect->prepare('SELECT quantity FROM recipe_ingredient WHERE ingredient = :id_ingredient AND id_recipe = :id_recipe');
+       $query->bindParam(':id_ingredient', $ingredient);
+       $query->bindParam(':id_recipe', $id_recipe);
+       $query->execute();
+       $response = $query->fetch();
+       return $response['quantity'];
+    }
+
+//Get ingredient type on recipe
+   private function getOnRecipeType($ingredient,$id_recipe){
+       $connect = new Connect();
+       $query = $connect->prepare('SELECT type FROM recipe_ingredient WHERE ingredient = :id_ingredient AND id_recipe = :id_recipe');
+       $query->bindParam(':id_ingredient', $ingredient);
+       $query->bindParam(':id_recipe', $id_recipe);
+       $query->execute();
+       $response = $query->fetch();
+       return $response['type'];
+    }
+   
    
 //Delete from user shopping list
    public static function deleteFromShoppingList($value,$id_user){
