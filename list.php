@@ -19,7 +19,7 @@ if($_POST["list_status"] == 1){
   header('Location: /app/steps.php?id='.$_POST["id_recipe_value"]);  
 }else{
   //Save new ingredients on list
-  User::addToShoppingList($_POST['ingredient_val'],$_POST['ingredients'],$id_user,$_POST["id_recipe_value"]);
+  User::addToShoppingList($_POST['ingredient_val'],$_POST['ingredients'],$id_user,$_POST["id_recipe_value"],$id_user);
 }
 
 //Html head

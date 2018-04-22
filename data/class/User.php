@@ -119,14 +119,26 @@
     }
    
 //Add ingredients to user's shopping list
-   public function addToShoppingList($options=null,$checked=null,$shopping_list=null,$id_recipe=null){
+   public function addToShoppingList($options=null,$checked=null,$shopping_list=null,$id_recipe=null,$id_user=null){
        if($checked){
           $unchecked = array_diff($options, $checked);
           $insert_ingredients = "INSERT INTO shopping_ingredients (id_ingredient, quantity, type, id_list) VALUES ";
             foreach($unchecked as $result) {
-              $quantity = User::getOnRecipeQuantity($result,$id_recipe);
+              $exist_quantity = User::searchOnShoppingList($result,$id_user);
+              if($exist_quantity > 0){
+                $quantity = User::getOnRecipeQuantity($result,$id_recipe);
+                $new_quantity = $quantity + $exist_quantity;
+                $connect = new Connect();
+                 $query = $connect->prepare("UPDATE shopping_ingredients SET quantity = :new_quantity WHERE id_ingredient = :id_ingredient");
+                 $query->bindParam(':new_quantity', $new_quantity);
+                 $query->bindParam(':id_ingredient', $result);
+                 $query->execute();
+                $connect = null;
+              }else{
+                $quantity = User::getOnRecipeQuantity($result,$id_recipe);
               $type = User::getOnRecipeType($result,$id_recipe);
               $insert_ingredients .= "(".$result.",".$quantity.", ".$type.",".$shopping_list."),";
+              }
               }
              $insert_ingredients = substr_replace($insert_ingredients, "", -1);
           $connect = new Connect();
@@ -138,6 +150,18 @@
         $insert_ingredients = "";
       }
    }
+   
+ //Search ingredient on user shopping list
+   private function searchOnShoppingList($ingredient, $id_user){
+       $connect = new Connect();
+       $query = $connect->prepare('SELECT quantity FROM shopping_ingredients WHERE id_ingredient = :id_ingredient AND id_list = :id_user');
+       $query->bindParam(':id_ingredient', $ingredient);
+       $query->bindParam(':id_user', $id_user);
+       $query->execute();
+       $response = $query->fetch();
+       return $response['quantity'];
+    }
+   
    
 //Get ingredient quantity on recipe
    private function getOnRecipeQuantity($ingredient,$id_recipe){
