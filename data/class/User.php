@@ -69,6 +69,17 @@
        }else{
           return false;
        }
+    } 
+   
+   //Search user by ID
+   public static function checkLogin($email,$password){
+       $pass = md5($password);
+       $connect = new Connect();
+       $query = $connect->prepare('SELECT id_user FROM ' . self::Table . ' WHERE email = :email AND password = :password');
+       $query->bindParam(':email', $email);
+       $query->bindParam(':password', $pass);
+       $query->execute();
+       $response = $query->fetch();
     }
    
  //Search all user values

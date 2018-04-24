@@ -5,6 +5,7 @@ $recipes = Recipe::getPopularRecipes();
 echo '<div class="recomended-title" style="background-color: '.$fourth_color.';color:#FFF;">';
 echo '<h2 class="container">Populares</h2>';
 echo '</div>';
+echo '<div class="container">';
 echo '<p style="margin-bottom: -20px;font-weight: bold;">Estos son los platillos que todos quieren.</p>';
 echo '<div class="row">';
 //Script
@@ -33,6 +34,7 @@ if($i==1){
   echo '</div>';
 }
 endforeach;
+echo '</div>';
 echo '</div>';
 echo '</div>';
 ?>

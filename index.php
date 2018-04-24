@@ -5,8 +5,12 @@ include 'data/vars.php';
 //Required classes
 require_once 'data/class/Category.php';
 require_once 'data/class/Recipe.php';
+require_once 'data/class/Site.php';
 require_once 'data/class/Sponsor.php';
 require_once 'data/class/User.php';
+
+//Visits counter
+Site::putVisit();
 
 //Html head
 include 'element/head.php'; 
